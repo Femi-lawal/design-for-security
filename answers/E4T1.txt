@@ -1,0 +1,6 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- RecipeWebServiceInstance security group WebAppSG should restrict traffic to only authorized IP addresses to port 22
+- Only allow private key authentication for ssh into RecipeWebServiceInstance to prevent brute force ssh attacks.
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+- The data in the secret recipes bucket should be encrypted and the policy InstanceRolePolicy-C3 should be restricted to only allow read access to the free recipes bucket instead of it having permisions for all S3 resources.

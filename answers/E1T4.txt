@@ -1,0 +1,11 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+The application web service instance RecipeWebServiceInstance is in a public subnet, meaning it is exposed to the public internet.
+The application security group WebAppSG allows port 5000 and port 22 to be accessible to the public internet.
+A more secure approach would be to put the web service in a private subnet only accessible to the load balancer AppLoadBalancerSG, and remove ssh from production server or at the very least set up a bastion host.
+
+# Poor practice 2
+The instance role InstanceRolePolicy-C3 has been given permission to permit all S3 actions on all resources.
+This does not follow the principle of least privilege, the application can do more than it needs to in S3, and attacker that can ssh into will be able to exploit this.
+A more secure approach is to restrict the policy to only what the application needs, then maybe encrypt the data in the S3 bucket and also enable versioning.

@@ -1,0 +1,11 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+Gaurd Duty revealed two findings of type UnauthorizedAccess:EC2/SSHBruteForce
+- AttackInstance EC2 instance(i-02f74bc1498d4a45e) has been involved in high severity SSH brute force attacks. It is being used to perform brute force attacks against RecipeWebServiceInstance
+- RecipeWebServiceInstance EC2 instance(i-0065a40f6cc55b980) was been involved in low severity SSH brute force attacks. It is being attacked by AttackInstance.
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+GuardDuty can detect unauthorized and unexpected activity in an AWS environment,
+by analyzing and processing data from AWS CloudTrail event logs, VPC Flow Logs, and DNS logs to detect anomalies involving the following AWS resource types: IAM access keys, EC2 instances, S3 buckets, and Amazon EKS resources.
+While in transit from these data sources to GuardDuty, all of the log data is encrypted. 
+GuardDuty extracts various fields from these logs for profiling and anomaly detection, and then discards the logs.    
+Reference: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html

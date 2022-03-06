@@ -1,0 +1,30 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+Amazon insector:
+All of the vulnerabilities are from the instances of the project
+- Security Group WebAppSG does not restrict ssh access
+- Security Group WebAppSG does not restrict rdp access
+- Security Group WebAppSG has ports other than 443 and 80 open to the public internet.
+- The EC2 instance RecipeWebServiceInstance Port range 0 to 65535 is reachable from an Internet Gateway
+
+Security Hub:
+The 3 buckets S3BucketVPCFlowLogs, S3BucketRecipesSecret and S3BucketRecipesFree all have the same 4 Findings
+- Critical warning S3.8 S3 Block Public Access setting should be enabled at the bucket-level
+- Medium warning S3.9 S3 bucket server access logging should be enabled
+- Medium warning S3.5 S3 buckets should require requests to use Secure Socket Layer
+- Medium warning S3.4 S3 buckets should have server-side encryption enabled
+
+AWS Config:
+It reveals non compliance for the 3 s3 buckets in the same areas as the findings in Security Hub
+The instances RecipeWebServiceInstance and AttackInstance have the following noncompliance:
+- This Amazon EC2 instances use IPv4 addresses.
+- The Amazon EC2 instances are not managed by AWS Systems Manager.
+- The Amazon EC2 instances are not configured to use the Amazon EC2 Instance Metadata Service Version 2 (IMDSv2).
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+- Update the security groups to disallow access on all ports to the instances from the Internet, except for 443 and 80.
+- ssh and rdp access should be restricted to certain ip addresses or removed completely from the production system.
+- Enable sever-side encryption on the S3 buckets
+- Enable server-side access logging on the S3 buckets
+- Update the permissions policy of the S3 bucket to allow only SSL requests.
+- Configure the EC2 instances to use Amazon EC2 Instanec Metadata Service Version 2 (IMDSv2).
+- Configure the Amazon EC2 instances to be managed by AWS Systems Manager.

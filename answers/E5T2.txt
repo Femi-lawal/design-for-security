@@ -1,0 +1,21 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+CodeSpoilt: It has the capability to scan more than 95 security vulnerabilities across 40+ resource types consisting of a wide range of AWS products.
+ 
+### Example vulnerability
+- Servers exposed publicly to the internet
+
+
+##Scan AMI’s or containers for OS vulnerabilities
+Clair:  Clair is an API-driven analysis engine that inspects containers layer-by-layer for known security flaws. Clair scans each container layer and provides a notification of vulnerabilities that may be a threat, based on the CVE database and similar data feeds from Red Hat, Ubuntu, and Debian.
+
+### Example vulnerability
+- Clair can detect Network attack vectors such as CVE-2014-0160, aka "Heartbleed" which is an information disclosure flaw.
+
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+Amazon Inspector enables Automated and continual vulnerability management at scale
+
+### Example vulnerability
+- Amazon Inspector can detect instances that have unrestricted access to the ssh port 22.
